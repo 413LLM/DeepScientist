@@ -160,6 +160,131 @@ The field names are machine-facing. The thinking should stay simple:
 - `evidence_grounding`: facts, allowed interpretations, and things not to claim.
 - `analysis_plan`: the checks a reviewer would ask for.
 
+## Math Modeling Paper Type / 数学建模论文类型
+
+When the paper is a mathematical modeling paper (数学建模论文, MCM/ICM, CUMCM), set `paper_type: "math_modeling"` instead of `"full_empirical"`.
+
+### Math Modeling Outline Schema / 数学建模大纲结构
+
+Use this schema inside `artifact.submit_paper_outline(..., detailed_outline={...})` when `paper_type: "math_modeling"`:
+
+```json
+{
+  "paper_view": {
+    "paper_type": "math_modeling",
+    "outline_maturity": "mature",
+    "working_title": "Paper-native title / 论文标题",
+    "problem_source": "Contest year + problem name or URL / 竞赛题目来源",
+    "subproblems": [
+      {
+        "problem_id": "P1",
+        "label": "问题一",
+        "description": "Original problem text / 原始问题描述",
+        "type": "optimization | prediction | evaluation | classification | other",
+        "data_available": true,
+        "data_description": "Available data description / 可用数据描述"
+      }
+    ],
+    "narrative_strategy": {
+      "central_thesis": "The one idea the paper wants readers to remember",
+      "central_insight": "The reusable lesson suggested by the model"
+    },
+    "story_spine": {
+      "problem": "The real-world problem to solve",
+      "gap": "Why simple approaches fail",
+      "method": "The mathematical model approach",
+      "main_result": "The key numerical or structural result",
+      "scope_limit": "Where the model stops being applicable"
+    },
+    "models": [
+      {
+        "model_id": "M1",
+        "target_subproblem": "P1",
+        "model_name": "Model name / 模型名称",
+        "model_type": "linear_programming | nonlinear_programming | differential_equation | statistical | graph | simulation | etc.",
+        "decision_variables": ["x1 description", "x2 description"],
+        "parameters": ["alpha description", "beta description"],
+        "objective_function": "Objective function description / 目标函数描述",
+        "constraints": ["Constraint 1 description", "Constraint 2 description"],
+        "solution_method": "Algorithm + software / 算法 + 软件",
+        "validation_method": "How to validate this model / 验证方法"
+      }
+    ],
+    "sensitivity_analysis_plan": {
+      "parameters_to_test": ["alpha", "beta"],
+      "range": "Test range for each parameter",
+      "expected_behavior": "Expected result pattern"
+    },
+    "strengths_weaknesses_plan": {
+      "expected_strengths": ["Strength 1", "Strength 2"],
+      "expected_weaknesses": ["Weakness 1", "Weakness 2"],
+      "improvement_directions": ["Direction 1"]
+    },
+    "notation_plan": {
+      "categories": ["indices", "sets", "variables", "parameters", "functions"],
+      "completeness_rule": "Every variable in every formula must appear in notation table"
+    },
+    "data_sources": [
+      {
+        "source": "Problem statement / 题目提供",
+        "description": "Data provided in contest problem",
+        "reliability": "assumed_reliable"
+      }
+    ],
+    "expected_figures_tables": [
+      {
+        "fig_id": "F1",
+        "type": "table",
+        "content": "Notation table / 符号说明表",
+        "placement": "notation_section"
+      },
+      {
+        "fig_id": "F2",
+        "type": "figure",
+        "content": "Sensitivity curve / 灵敏度曲线",
+        "placement": "sensitivity_analysis"
+      }
+    ],
+    "appendix_plan": [
+      "Code listings / 代码清单",
+      "Supplementary derivations / 补充推导",
+      "Full result tables / 完整结果表"
+    ],
+    "evidence_grounding": {
+      "observed_facts": ["Problem conditions", "Provided data", "Assumptions"],
+      "allowed_interpretations": ["Model implications", "Sensitivity conclusions"],
+      "must_not_claim": ["Fabricated data", "Fake references", "Unverified external facts"],
+      "evidence_gaps": ["Uncertain assumptions", "Data limitations"]
+    }
+  }
+}
+```
+
+### Math Modeling Outline Validation / 数学建模大纲验证
+
+Before handing to `write`, check:
+
+- [ ] `paper_type` is `math_modeling`, not `full_empirical`
+- [ ] All sub-problems from the original question are identified
+- [ ] Each sub-problem has a corresponding model planned
+- [ ] Notation plan covers all variable categories
+- [ ] Sensitivity analysis plan is explicit
+- [ ] Data sources are documented
+- [ ] Appendix plan includes code and supplementary derivations
+- [ ] The outline does NOT force Introduction/Related Work/Method/Experiments structure
+- [ ] The outline does NOT require 4-8 analysis jobs or empirical paper rules
+
+### Math Modeling Distinct from Full Empirical / 与经验型论文的区别
+
+| Aspect | math_modeling | full_empirical |
+|--------|:-------------:|:---------------:|
+| Structure | Problem→Assumptions→Notation→Model→Solution→Sensitivity→Strengths→Conclusion | Intro→Related Work→Method→Experiments→Analysis→Conclusion |
+| Evidence | Problem conditions, data, model derivation, sensitivity | Experimental results, ablation studies, benchmarks |
+| Related Work | Optional, only if user requests | Usually required |
+| Analysis count | Sensitivity analysis, not 4-8 analysis jobs | 4-8 analysis jobs expected |
+| Reference count | 5-15 | 30-50 |
+| Template | `templates/math_modeling/` | `templates/iclr2026/` or venue-specific |
+
 ## Analysis Plan
 
 A mature empirical paper usually needs 4-8 analysis jobs beyond the main result. Choose them because they support the story, not because of a fixed checklist.

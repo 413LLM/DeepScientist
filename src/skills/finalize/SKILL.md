@@ -108,6 +108,33 @@ If the active quest/runtime state is unclear after restart or long pause, call `
 If the exact latest `SUMMARY.md`, `status.md`, or active user requirement wording matters for closure, call `artifact.read_quest_documents(...)`.
 If earlier user/assistant continuity matters for whether the quest should really stop, call `artifact.get_conversation_context(...)` instead of guessing from prompt context alone.
 
+## Math Modeling Paper Final Check / 数学建模论文最终交付检查
+
+When finalizing a mathematical modeling paper, additionally verify:
+
+- [ ] `main.tex` compiles without errors (run `bash_exec` to verify) / `main.tex` 编译无错误
+- [ ] All required chapters are present / 所有必含章节均已写入:
+  - [ ] 摘要 / Abstract
+  - [ ] 问题重述 / Problem Restatement
+  - [ ] 问题分析 / Problem Analysis
+  - [ ] 模型假设 / Model Assumptions
+  - [ ] 符号说明 / Notation
+  - [ ] 模型建立 / Model Construction
+  - [ ] 模型求解 / Model Solution
+  - [ ] 模型检验 / Model Validation
+  - [ ] 灵敏度分析 / Sensitivity Analysis
+  - [ ] 模型优缺点 / Strengths & Weaknesses
+  - [ ] 结论 / Conclusion
+  - [ ] 参考文献 / References
+  - [ ] 附录 / Appendix
+- [ ] Figure/table/equation numbers are consistent and sequential / 图表和公式编号连续且一致
+- [ ] All references are either real or explicitly marked as `[PLACEHOLDER]` / 参考文献均为真实引用或明确标注为占位符
+- [ ] Appendix includes code listings, data processing notes, or supplementary derivations / 附录包含代码、数据处理说明或补充推导
+- [ ] Chinese typesetting is correct (no garbled characters, proper fonts) / 中文排版正常，无乱码
+- [ ] Every variable appears in notation table / 每个变量都在符号表中
+- [ ] Every sub-problem is answered in the conclusion / 每个子问题都在结论中回答
+- [ ] No fabricated data or results / 无编造数据或结果
+
 ## Truth sources
 
 Use:

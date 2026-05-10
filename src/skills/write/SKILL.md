@@ -11,6 +11,70 @@ skill_role: stage
 - If the task is specifically "upgrade an existing draft toward top-conference / oral quality", use the `Draft To Top Conference Oral` section below.
 - Do not use when the evidence base is still weak or unstable, the main need is new experiments / baselines / ideation, or the request is only literature search.
 
+# Math Modeling Paper Mode / 数学建模论文模式
+
+When the target deliverable is a mathematical modeling paper (数学建模论文, MCM/ICM-style paper, CUMCM / 全国大学生数学建模竞赛论文, optimization/prediction/evaluation modeling report), activate Math Modeling Paper Mode.
+
+## Math Modeling Mode Triggers
+
+Detect math modeling mode when the user task or quest context includes any of:
+- 数学建模论文 / mathematical modeling paper
+- MCM / ICM paper / MCM-ICM style paper
+- 全国大学生数学建模竞赛论文 / CUMCM paper
+- 建模竞赛论文 / modeling competition paper
+- 优化模型 / optimization model
+- 预测模型 / prediction model
+- 评价模型 / evaluation model
+- 综合评价类建模报告 / comprehensive evaluation report
+- A paper whose core structure must include: 问题重述、模型假设、符号说明、模型建立、模型求解、灵敏度分析、模型优缺点
+
+## Math Modeling Mode Rules
+
+When math modeling mode is active, the following rules override or supplement the default write rules:
+
+1. **Skill priority**: Read and follow `src/skills/math-modeling/SKILL.md` as the primary structural authority.
+
+2. **Template selection**: Use `templates/math_modeling/` instead of the default `templates/iclr2026/` or other conference templates.
+   - DO NOT use ICLR/NeurIPS/ICML templates for math modeling papers.
+   - The template uses `ctexart` for Chinese support. For English-only papers, the agent may switch to `article` class but must keep the math modeling section structure.
+
+3. **Section structure**: The paper MUST follow the math modeling section order:
+   - 摘要 / Abstract → 关键词 / Keywords → 问题重述 → 问题分析 → 模型假设 → 符号说明 → 模型建立 → 模型求解 → 模型检验 → 灵敏度分析 → 模型优缺点 → 结论 → 参考文献 → 附录
+
+4. **No Related Work**: Do NOT write a Related Work section unless the user explicitly requests it. The default math modeling paper does not include a literature review.
+
+5. **Evidence type**: The core evidence for math modeling papers comes from:
+   - 题目条件 / Problem conditions
+   - 数据来源 / Data sources
+   - 变量定义 / Variable definitions
+   - 模型假设 / Model assumptions
+   - 目标函数 / Objective functions
+   - 约束条件 / Constraint conditions
+   - 求解过程 / Solution derivation
+   - 验证结果 / Validation results
+   - 灵敏度分析 / Sensitivity analysis
+   - Do NOT treat "experimental results from a benchmark matrix" as the sole evidence type.
+
+6. **Do NOT apply empirical paper rules**: The following rules from the default write mode do NOT apply:
+   - "5-10 paper-facing experiment/analysis groups" → math modeling papers do not require ablation studies
+   - "4-8 analysis jobs" from paper-outline → sensitivity analysis is the primary analysis
+   - "estimate roughly 30-50 verified references" → math modeling papers need fewer references (5-15 typically)
+
+## Math Modeling Writing Checklist / 数学建模写作检查清单
+
+Before completing the draft, verify each of the following:
+
+- [ ] 每个变量是否在符号表中有解释？ / Is every variable explained in the notation table?
+- [ ] 每个模型假设是否在后续模型中被使用？ / Is every model assumption used in the subsequent model?
+- [ ] 每个子问题是否有对应的模型和结果？ / Does every sub-problem have a corresponding model and result?
+- [ ] 每个结果是否有表格或图支撑？ / Is every result supported by a table or figure?
+- [ ] 是否包含模型优缺点分析？ / Is strengths & weaknesses analysis included?
+- [ ] 是否避免了编造数据和引用？ / Is the paper free of fabricated data and references?
+- [ ] 摘要是否包含研究问题、使用模型、求解方法、主要结果、结论建议？ / Does the abstract include problem, model, method, results, and conclusion?
+- [ ] 结论是否逐一回答了题目中的所有问题？ / Does the conclusion answer every sub-problem from the original question?
+- [ ] 图表和公式编号是否正常？ / Are figure, table, and equation numbers correct?
+- [ ] 中文排版是否正常（如需中文）？ / Is Chinese typesetting correct (if applicable)?
+
 ## One-Sentence Summary
 - Refresh the paper contract first, then draft section-by-section from durable evidence; if evidence, figures, or citations are not ready, repair or route back instead of writing around the gap.
 
@@ -144,7 +208,7 @@ For ordinary active work, prefer a concise progress update once work has crossed
 - A user-specified analysis count should stay visible: if the user asked for 4-8 analyses, explicitly report the current count and any waiver instead of relying on a generic green coverage result.
 - Use `memory.write(...)` only for reusable writing, citation, or search lessons, not one-off local edits.
 - For paper-like deliverables, aim for roughly `30-50` verified references unless the scope clearly justifies fewer.
-- Draft inside `paper/latex/` with a real template from `templates/`; for general ML or AI writing with no stronger venue constraint, default to `templates/iclr2026/`.
+- Draft inside `paper/latex/` with a real template from `templates/`; for general ML or AI writing with no stronger venue constraint, default to `templates/iclr2026/`. For mathematical modeling papers (数学建模论文 / MCM-ICM / CUMCM), use `templates/math_modeling/` instead.
 - Keep the narrative arc explicit: motivation -> challenge -> resolution.
 - Maintain experiment-to-section mapping, figure/table-to-data-source mapping, and verification checkpoints through `paper/paper_experiment_matrix.md`, `paper/paper_experiment_matrix.json`, and `paper/evidence_ledger.json` / `paper/evidence_ledger.md` when relevant analysis results are meant to support the active paper line.
 - Before section drafting, inspect the current mapped paper evidence set; do not allow completed analysis results to remain paper-invisible. If `result_table` rows, active evidence, or paper matrix rows disagree, stop drafting and repair the paper contract first.

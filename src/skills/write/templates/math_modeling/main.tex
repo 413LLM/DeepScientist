@@ -1,0 +1,61 @@
+\documentclass[UTF8]{ctexart}
+
+% === Math & Science ===
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{bm}
+
+% === Figures & Tables ===
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+
+% === Algorithms ===
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% === Layout ===
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+% === Links ===
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+% === Captions ===
+\usepackage{caption}
+
+% === Custom commands ===
+\newtheorem{definition}{定义}[section]
+\newtheorem{theorem}{定理}[section]
+
+\begin{document}
+
+% === Title page ===
+\title{\textbf{数学建模论文标题 \\ Mathematical Modeling Paper Title}}
+\author{作者姓名}
+\date{\today}
+\maketitle
+
+% === Include sections ===
+\input{sections/abstract}
+\input{sections/problem_restatement}
+\input{sections/problem_analysis}
+\input{sections/assumptions}
+\input{sections/notation}
+\input{sections/model_construction}
+\input{sections/model_solution}
+\input{sections/validation}
+\input{sections/sensitivity_analysis}
+\input{sections/strengths_weaknesses}
+\input{sections/conclusion}
+
+% === References ===
+\bibliographystyle{plain}
+\bibliography{references}
+
+% === Appendix ===
+\appendix
+\input{sections/appendix}
+
+\end{document}

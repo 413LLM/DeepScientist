@@ -1,0 +1,74 @@
+% ============================================================
+% sections/model_construction.tex — 模型建立 / Model Construction
+% ============================================================
+% For each sub-problem, construct the mathematical model.
+% Each model should specify:
+%   - Decision variables / 决策变量
+%   - Objective function / 目标函数
+%   - Constraint conditions / 约束条件
+%   - Parameters / 参数
+
+\section{模型建立}
+
+\subsection{问题一的[模型名称]模型}
+
+\subsubsection{模型思路}
+
+[描述建模思路：选择该模型的原因，模型的基本原理]
+
+\subsubsection{模型建立}
+
+\textbf{决策变量：} [列出决策变量]
+
+\textbf{目标函数：} [写出目标函数表达式，如]
+\begin{equation}\label{eq:obj1}
+    \min Z = \sum_{i=1}^{N} (y_i - \hat{y}_i)^2
+\end{equation}
+
+\textbf{约束条件：} [列出所有约束条件]
+\begin{align}
+    &\sum_{i=1}^{N} x_{ij} \leq C_j, \quad \forall j = 1, 2, \ldots, M \label{eq:con1_1}\\
+    &x_{ij} \geq 0, \quad \forall i, j \label{eq:con1_2}
+\end{align}
+
+\subsection{问题二的[模型名称]模型}
+
+\subsubsection{模型思路}
+
+[描述建模思路]
+
+\subsubsection{模型建立}
+
+\textbf{决策变量：} [列出决策变量]
+
+\textbf{目标函数：}
+\begin{equation}\label{eq:obj2}
+    \text{[在此写出目标函数]}
+\end{equation}
+
+\textbf{约束条件：}
+\begin{align}
+    \text{[在此写出约束条件]} \label{eq:con2_1}
+\end{align}
+
+\subsection{问题三的[模型名称]模型}
+
+\subsubsection{模型思路}
+
+[描述建模思路]
+
+\subsubsection{模型建立}
+
+\textbf{决策变量：} [列出决策变量]
+
+\textbf{目标函数：}
+\begin{equation}\label{eq:obj3}
+    \text{[在此写出目标函数]}
+\end{equation}
+
+\textbf{约束条件：}
+\begin{align}
+    \text{[在此写出约束条件]} \label{eq:con3_1}
+\end{align}
+
+% Add more models as needed / 按需增加模型

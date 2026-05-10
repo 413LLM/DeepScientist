@@ -180,6 +180,30 @@ Audit at least these dimensions:
 - experiment package completeness relative to nearby high-level papers
 - submission readiness
 
+## Math Modeling Paper Review Checklist / 数学建模论文审查清单
+
+When the paper under review is a mathematical modeling paper (identified by the math-modeling skill or `paper_type: math_modeling` in the outline), apply this additional checklist:
+
+- [ ] 问题重述是否准确，不直接复制题目原文？ / Is the problem restatement accurate and not a verbatim copy of the original problem?
+- [ ] 假设是否合理且必要？每个假设是否在后续模型中得到了使用？ / Are assumptions reasonable and actually used in the models?
+- [ ] 符号表是否完整？每个公式中的变量是否都出现在符号表中？ / Is the notation table complete? Does every variable in every formula appear in it?
+- [ ] 每个子问题是否都有对应的模型？模型与问题之间是否逻辑一致？ / Does each sub-problem have a corresponding model? Is the logic consistent?
+- [ ] 模型推导是否跳步？约束条件是否遗漏？ / Are there skipped steps in the derivation? Are any constraints missing?
+- [ ] 求解过程是否可复现？是否有明确的算法步骤和软件说明？ / Is the solution process reproducible? Are algorithm steps and software clearly stated?
+- [ ] 灵敏度分析是否充分？是否测试了关键参数的合理范围？ / Is the sensitivity analysis thorough? Are key parameters tested over reasonable ranges?
+- [ ] 模型优缺点是否客观？是否避免了过度夸大或盲目贬低？ / Are strengths and weaknesses objective? Is the assessment neither overselling nor underselling?
+- [ ] 结论是否逐一回答了题目中的全部要求？ / Does the conclusion answer each required question from the original problem?
+- [ ] 是否有编造数据或参考文献的嫌疑？ / Is there any suspicion of fabricated data or references?
+- [ ] 摘要是否包含：研究问题、使用模型、求解方法、主要结果、结论建议？ / Does the abstract include research problem, model, solution method, main results, and conclusions?
+- [ ] 参考文献是否真实或明确标注为 placeholder？ / Are references real or explicitly marked as placeholders?
+
+When reviewing a math modeling paper, do NOT apply the following empirical-paper checks (unless the user explicitly requests them):
+- "5-10 ready experiment/analysis groups"
+- "4-8 analysis jobs beyond headline result"
+- "stronger-baseline comparison" or "competitor-inclusive" requirements
+- "30-50 verified references" count
+- "component ablation" requirements
+
 ## Workflow
 
 ### 1. Plan the audit
